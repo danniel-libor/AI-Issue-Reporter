@@ -44,10 +44,13 @@ This will create a `config/issue-reporter.php` file where you can modify the pac
 Add these variables to your `.env` file:
 
 ```
-GITHUB_REFERENCE=main
-GITHUB_REPOSITORY=your-repository
-SLACK_WEBHOOK=https://hooks.slack.com/services/your/slack/webhook
+ISSUE_REPORTER_ENABLED=false  # Set to true in production environments only
+ISSUE_REPORTER_GITHUB_REFERENCE=main
+ISSUE_REPORTER_GITHUB_REPOSITORY=your-repository
+ISSUE_REPORTER_SLACK_WEBHOOK=https://hooks.slack.com/services/your/slack/webhook
 ```
+
+> **Note:** Always keep `ISSUE_REPORTER_ENABLED` set to `false` for local development environments to prevent unnecessary reporting of development exceptions.
 
 ## Usage
 
@@ -142,11 +145,12 @@ The package sends exception data to a designated endpoint. Make sure:
 
 ## Configuration Options
 
-| Option              | Environment Variable | Description                                                                 |
-| ------------------- | -------------------- | --------------------------------------------------------------------------- |
-| `reference`         | `GITHUB_REFERENCE`   | The default branch or reference in your repository (e.g., 'main', 'master') |
-| `repository`        | `GITHUB_REPOSITORY`  | Your repository name in 'repo' format                                       |
-| `slack_webhook_url` | `SLACK_WEBHOOK`      | Your Slack webhook URL for notifications                                    |
+| Option              | Environment Variable               | Description                                                                                      |
+| ------------------- | ---------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `enabled`           | `ISSUE_REPORTER_ENABLED`           | Whether the issue reporter is enabled (true/false). Should be set to false for local development |
+| `reference`         | `ISSUE_REPORTER_GITHUB_REFERENCE`  | The default branch or reference in your repository (e.g., 'main', 'master')                      |
+| `repository`        | `ISSUE_REPORTER_GITHUB_REPOSITORY` | Your repository name in 'repo' format                                                            |
+| `slack_webhook_url` | `ISSUE_REPORTER_SLACK_WEBHOOK`     | Your Slack webhook URL for notifications                                                         |
 
 ## Contributing
 
