@@ -102,6 +102,26 @@ class Handler extends ExceptionHandler
 }
 ```
 
+### Using bootstrap/app.php (Laravel 10+)
+
+For Laravel 10 and above, you can also integrate the issue reporter in your `bootstrap/app.php` file:
+
+```php
+// bootstrap/app.php
+
+use Illuminate\Foundation\Application;
+use Illuminate\Foundation\Configuration\Exceptions;
+use EngagingIo\IssueReporter\Facades\IssueReporter;
+// ...
+
+return Application::configure(basePath: dirname(__DIR__))
+    // ...
+    ->withExceptions(function (Exceptions $exceptions) {
+        // This section captures all types of exceptions.
+        $exceptions->reportable(fn (\Throwable $e) => IssueReporter::report($e));
+    })->create();
+```
+
 ### HTTP RequestException Handling
 
 The package automatically detects if the exception is an HTTP `RequestException` and includes relevant request data in the report:
