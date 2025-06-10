@@ -1,0 +1,43 @@
+{
+    "name": "engaging-io/issue-reporter",
+    "description": "A Laravel package for reporting GitHub issues using AI.",
+    "keywords": [
+        "laravel",
+        "github",
+        "issue",
+        "reporter",
+        "ai",
+        "engaging-io"
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "EngagingIo\\IssueReporter\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Danniel Libor",
+            "email": "dlibor.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.3|^8.0|^8.1|^8.2|^8.3",
+        "illuminate/http": "^8.0|^9.0|^10.0|^11.0|^12.17",
+        "illuminate/support": "^8.0|^9.0|^10.0|^11.9|^12.17"
+    },
+    "config": {
+        "sort-packages": true,
+        "preferred-install": "dist"
+    },
+    "scripts": {},
+    "extra": {
+        "laravel": {
+            "providers": [
+                "EngagingIo\\IssueReporter\\IssueReporterServiceProvider"
+            ]
+        }
+    }
+}
