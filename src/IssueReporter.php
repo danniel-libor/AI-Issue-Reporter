@@ -55,7 +55,7 @@ class IssueReporter implements \EngagingIo\IssueReporter\Contracts\IssueReporter
      */
     private static function sendReport(array $payload): void
     {
-        $endpoint = '';
+        $endpoint = 'https://eio-ai-reporter.ec7.co/report';
         Http::post($endpoint, $payload);
     }
 }
