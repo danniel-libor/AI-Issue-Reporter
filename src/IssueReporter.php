@@ -4,7 +4,6 @@ namespace EngagingIo\IssueReporter;
 
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Config;
 
 class IssueReporter implements \EngagingIo\IssueReporter\Contracts\IssueReporterInterface
 {
@@ -16,6 +15,9 @@ class IssueReporter implements \EngagingIo\IssueReporter\Contracts\IssueReporter
      */
     public static function report(\Throwable $e)
     {
+        // Check if the issue reporter is enabled
+        if (!config('issue-reporter.enabled')) return;
+
         $payload = self::buildBasePayload($e);
 
         if ($e instanceof RequestException && isset($e->response->transferStats)) {
